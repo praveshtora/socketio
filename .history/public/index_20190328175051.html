@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>LocationApp</title>
+    </head>
+    <script
+  src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+        $.get('http://localhost:3000/location/data',function(data){
+            console.log(data);
+            var tr = '<tr>';
+            $.each(data,function(index,element){
+                tr+='<td>'+element.longitude+"</td>";
+                tr+='<td>'+element.latitude+"</td>";
+                tr+='<td>'+element.phone+"</td>";
+                tr+='<td>'+element.detection_time+"</td>";
+            });
+            tr+=('</tr');
+            $('#locationTable').append = tr;
+        });
+    </script>
+    <body>
+        <table id='locationTable'>
+            <tr>
+                <th>Longitude</th>
+                <th>Latitude</th>
+                <th>Phone</th>
+                <th>Time</th>
+            </tr>
+        </table>
+    </body>
+</html>
